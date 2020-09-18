@@ -2,13 +2,13 @@
 
 ## Exercise I
 
-a) O c^n
+a) O(n)
 
-This is a polynomial operation. Because the while loop condition is set by cubing N, this means that while loop run time will scale in an ever increasing manner as N increases. E.g. with an n of 2 the while loop would run 8 times, and with an n of 3 it would run 27 times.
+While this, at first, appears to be a polynomial operation because N is cubed in the while loop definition, because N is then doubled within the while loop, those two N's cancel out two of the N's in the while loop definition, so it's actually a linear operation.
 
-b) O(n^2)
+b) O(n log n)
 
-This is a simple nested loop function where we have to iterate through two loops based on N, so N\*N is O(n^2)
+At first, this appears to be a simple nested loop which would be an O(n^2) operation, but because J is doubled on each iteration inside the nested loop, the nested loop has a logarithmic component, which when combined with the outer loop makes for a linearithmic operation.
 
 c) O(n)
 
@@ -16,4 +16,6 @@ This is a linear operation. The function is recursive, and calls itself in a lin
 
 ## Exercise II
 
-Eggs are broken if dropped from a floor F or higher. The building is N floors tall. In order to minimize the number of eggs broken, you want F to be as high as possible. There's nothing stopping us from making the top floor of the buidling floor F every time, as that would mean only the top floor could break eggs. Thus, you'd simply set floor F to be last floor. This is a constant O(1) run time because the work does not change as N changes.
+Because the floors are, in effect, sorted from min to max height, you could use a binary search algorithm to find floor F. You would first find the middlepoint of the floors, drop an egg to see if it breaks, and if it breaks you would then know that floor F is in the floors below you, or vice versa if the egg didn't break. You'd repeat this process until you find floor F.
+
+The runtime of this operation is O(log n).

@@ -100,16 +100,27 @@ class SortingRobot:
         """
         # Fill this out
 
-        while self._light == "OFF":
-            self._light = "ON"
+        self.swap_item()
 
-            for i in range(0, len(self._list)-1):
-                if self._list[i] > self._list[i+1]:
-                    self._light = "OFF"
-                    self._list[i], self._list[i +
-                                              1] = self._list[i+1], self._list[i]
+        while self.light_is_on() is False:
+            # self.set_light_on()
 
-        return self._list
+            while self.can_move_right():
+                self.move_right()
+                if self.compare_item() == 1:
+                    self.swap_item()
+                    # self.set_light_off()
+
+            while self.compare_item() != None:
+                self.move_left()
+
+            self.swap_item()
+
+            if self.can_move_right():
+                self.move_right()
+                self.swap_item()
+            else:
+                self.set_light_on()
 
         # sorted = False
 
